@@ -337,4 +337,459 @@ public class DataUtilitiesTest extends DataUtilities {
         assertEquals(0.5, result.getValue(2));
     }
 
+
+
+    	/** Test strategy: 
+	 This set of tests verifies the behavior of calculateColumnTotal
+	 with different input values, including negative numbers, null values, and edge cases.
+	 
+	 returns:
+	 	The sum of a row in a particular column
+**/
+	
+	 @Test
+	 public void calculateColumnTotalForTwoValues() {
+	     // setup
+	     Mockery mockingContext = new Mockery();
+	     final Values2D values = mockingContext.mock(Values2D.class);
+	     mockingContext.checking(new Expectations() {
+	         {
+	             one(values).getRowCount();
+	             will(returnValue(2));
+	             one(values).getValue(0, 0);
+	             will(returnValue(7.5));
+	             one(values).getValue(1, 0);
+	             will(returnValue(2.5));
+	         
+	         }
+	     });
+	     double result = DataUtilities.calculateColumnTotal(values, 0);
+	     // verify
+	     assertEquals(result, 10.0, .000000001d);
+	     // tear-down: NONE in this test method
+	 }
+	 
+	 // Test To check columnTotal for 5 negative values in a column
+	 @Test
+	 public void calculateColumnTotalFor5NegativeValues() {
+	     // Setup
+	     Mockery mockingContext = new Mockery();
+	     final Values2D values = mockingContext.mock(Values2D.class);
+	     mockingContext.checking(new Expectations() {
+	         {
+	             one(values).getRowCount();
+	             will(returnValue(5));
+	             one(values).getValue(0, 0);
+	             will(returnValue(-7.5));
+	             one(values).getValue(1, 0);
+	             will(returnValue(-2.5));
+	             one(values).getValue(2, 0);
+	             will(returnValue(-3.5));
+	             one(values).getValue(3, 0);
+	             will(returnValue(-4.5));
+	             one(values).getValue(4, 0);
+	             will(returnValue(-5.5));
+	             
+	         }
+	     });
+	     double result = DataUtilities.calculateColumnTotal(values, 0);
+
+	     // Verify
+	     assertEquals("Sum of 5 negative values was unexpected.", -23.5, result, .000000001d);
+	 }
+
+	 // Test To check sum of mixed negative and positive values in a column
+	 @Test
+	 public void calculateColumnTotalForMixedPositiveAndNegativeValues() {
+	     // Setup
+	     Mockery mockingContext = new Mockery();
+	     final Values2D values = mockingContext.mock(Values2D.class);
+	     mockingContext.checking(new Expectations() {
+	         {
+	             one(values).getRowCount();
+	             will(returnValue(4));
+	             one(values).getValue(0, 0);
+	             will(returnValue(-7.5));
+	             one(values).getValue(1, 0);
+	             will(returnValue(2.5));
+	             one(values).getValue(2, 0);
+	             will(returnValue(3.5));
+	             one(values).getValue(3, 0);
+	             will(returnValue(-4.5));
+	         }
+	     });
+	     double result = DataUtilities.calculateColumnTotal(values, 0);
+
+	     // Verify
+	     assertEquals("Sum of mixed positive and negative values was unexpected.", -6.0, result, .000000001d);
+	 }
+	 
+	 // Test to check if an empty matrix of rows and columns can be handled
+	  @Test
+	    public void calculateColumnTotalForEmptyData() {
+	    	// setup
+		     Mockery mockingContext = new Mockery();
+		     final Values2D values = mockingContext.mock(Values2D.class);
+		     mockingContext.checking(new Expectations() {
+		         {
+		             one(values).getRowCount();
+		             will(returnValue(0));
+		         }
+		     });
+	    	double result = DataUtilities.calculateColumnTotal(values, 0);
+	    	// verify
+	    	assertEquals("Sum was unexpected when handling an empty matrix.", 0, result, .000000001d);	
+	    }
+	 
+	 // Test to check if a large number of rows can be handled
+	 @Test
+	 public void calculateColumnTotalForLargeNumberOfRows() {
+	     // setup
+	     Mockery mockingContext = new Mockery();
+	     final Values2D values = mockingContext.mock(Values2D.class);
+	     mockingContext.checking(new Expectations() {
+	         {
+	             one(values).getRowCount();
+	             will(returnValue(100));
+	             for (int i = 0; i < 100; i++) {
+	            	 one(values).getValue(i, 0);
+	            	 will(returnValue(2));
+	             }
+	         }
+	     });
+	     double result = DataUtilities.calculateColumnTotal(values, 0);
+
+	     // verify
+	     assertEquals("Sum of Large Number of Rows was unexpected.", 200, result, .000000001d);
+	 }
+	 
+	 
+	 //test to check if the sum is 0 when a column contains a null value
+     @Test
+	 public void calculateColumnTotalThatContainsANullValue() {
+	 
+	     // setup
+	     Mockery mockingContext = new Mockery();
+	     final Values2D values = mockingContext.mock(Values2D.class);
+	     mockingContext.checking(new Expectations() {
+	         {
+	             one(values).getRowCount();
+	             will(returnValue(4));
+	             one(values).getValue(0, 0);
+	             will(returnValue(null));
+	             one(values).getValue(1, 0);
+	             will(returnValue(5));
+	             one(values).getValue(2, 0);
+	             will(returnValue(7.5));
+	             one(values).getValue(3, 0);
+	             will(returnValue(8.5));
+	         }
+	     });
+	     double result = DataUtilities.calculateColumnTotal(values, 0);
+	     
+	     // verify
+	     assertEquals("Sum was unexpected when handling null value in column.", 0, result, .000000001d);
+	 }
+     
+     
+     //test to check if value when a column contains is an invalid index 
+     @Test
+	 public void calculateColumnTotalThatContainsInvalidColumnIndex() {
+	 
+	     // setup
+	     Mockery mockingContext = new Mockery();
+	     final Values2D values = mockingContext.mock(Values2D.class);
+	     mockingContext.checking(new Expectations() {
+	         {
+	             one(values).getRowCount();
+	             will(returnValue(2));
+	             one(values).getValue(0, 0);
+	             will(returnValue(6.0));
+	             one(values).getValue(1, 0);
+	             will(returnValue(4.0));
+	         }
+	            
+	         
+	     });
+	    
+	     
+	     try {
+	    	 double result = DataUtilities.calculateColumnTotal(values, -4);
+	    	 assertEquals("Sum was unexpected when handling invalud index in column.", 0, result, .000000001d);
+	     }
+	     catch (Exception e) {
+	            // Handle the exception here
+	    	 assertTrue("Raised an exception" + e +". Should have return 0 as per documentation.", false);
+	        }
+	     
+	     
+	   }
+     
+     
+     // Test To check sum of a large indexed column
+	 @Test
+	 public void calculateColumnTotalForLargeColumnIndex() {
+	     // Setup
+	     Mockery mockingContext = new Mockery();
+	     final Values2D values = mockingContext.mock(Values2D.class);
+	     mockingContext.checking(new Expectations() {
+	         {
+	             one(values).getRowCount();
+	             will(returnValue(4));
+	             one(values).getValue(0, 100);
+	             will(returnValue(7.5));
+	             one(values).getValue(1, 100);
+	             will(returnValue(2.5));
+	             one(values).getValue(2, 100);
+	             will(returnValue(3.5));
+	             one(values).getValue(3, 100);
+	             will(returnValue(4.5));
+	         }
+	     });
+	     double result = DataUtilities.calculateColumnTotal(values, 100);
+
+	     // Verify
+	     assertEquals("Sum of Large Column Index was unexpected.", 18.0, result, .000000001d);
+	 }
+     
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+
+
+
+/** Test strategy: 
+ This set of tests verifies the behavior of calculateRowTotal
+with different input values, including negative numbers, null values, and edge cases.
+
+returns:
+The sum of a Column in a particular row
+**/
+
+    @Test
+    public void calculateRowTotalForTwoValues() {
+        // setup
+        Mockery mockingContext = new Mockery();
+        final Values2D values = mockingContext.mock(Values2D.class);
+        mockingContext.checking(new Expectations() {
+            {
+                one(values).getColumnCount();
+                will(returnValue(2));
+                one(values).getValue(0, 0);
+                will(returnValue(7.5));
+                one(values).getValue(0, 1);
+                will(returnValue(2.5));
+            
+            }
+        });
+        double result = DataUtilities.calculateRowTotal(values, 0);
+        // verify
+        assertEquals(result, 10.0, .000000001d);
+        // tear-down: NONE in this test method
+    }
+    
+    
+    
+
+    
+    // Test To check rowTotal for 5 negative values in a row
+    @Test
+    public void calculateRowTotalFor5NegativeValues() {
+        // Setup
+        Mockery mockingContext = new Mockery();
+        final Values2D values = mockingContext.mock(Values2D.class);
+        mockingContext.checking(new Expectations() {
+            {
+                one(values).getColumnCount();
+                will(returnValue(5));
+                one(values).getValue(0, 0);
+                will(returnValue(-7.5));
+                one(values).getValue(0, 1);
+                will(returnValue(-2.5));
+                one(values).getValue(0, 2);
+                will(returnValue(-3.5));
+                one(values).getValue(0, 3);
+                will(returnValue(-4.5));
+                one(values).getValue(0, 4);
+                will(returnValue(-5.5));
+                
+            }
+        });
+        double result = DataUtilities.calculateRowTotal(values, 0);
+
+        // Verify
+        assertEquals("Sum of 5 negative values was unexpected.", -23.5, result, .000000001d);
+    }
+
+    // Test To check sum of mixed negative and positive values in a row
+    @Test
+    public void calculateRowTotalForMixedPositiveAndNegativeValues() {
+        // Setup
+        Mockery mockingContext = new Mockery();
+        final Values2D values = mockingContext.mock(Values2D.class);
+        mockingContext.checking(new Expectations() {
+            {
+                one(values).getColumnCount();
+                will(returnValue(4));
+                one(values).getValue(0, 0);
+                will(returnValue(-7.5));
+                one(values).getValue(0, 1);
+                will(returnValue(2.5));
+                one(values).getValue(0, 2);
+                will(returnValue(3.5));
+                one(values).getValue(0, 3);
+                will(returnValue(-4.5));
+            }
+        });
+        double result = DataUtilities.calculateRowTotal(values, 0);
+
+        // Verify
+        assertEquals("Sum of mixed positive and negative values was unexpected.", -6.0, result, .000000001d);
+    }
+    
+    // Test to check if an empty matrix of rows and columns can be handled
+    @Test
+    public void calculateRowTotalForEmptyData() {
+        // setup
+            Mockery mockingContext = new Mockery();
+            final Values2D values = mockingContext.mock(Values2D.class);
+            mockingContext.checking(new Expectations() {
+                {
+                    one(values).getColumnCount();
+                    will(returnValue(0));
+                }
+            });
+        double result = DataUtilities.calculateRowTotal(values, 0);
+        // verify
+        assertEquals("Sum was unexpected when handling an empty matrix.", 0, result, .000000001d);	
+    }
+    
+    // Test to check if a large number of rows can be handled
+    @Test
+    public void calculateRowTotalForLargeNumberOfColumns() {
+        // setup
+        Mockery mockingContext = new Mockery();
+        final Values2D values = mockingContext.mock(Values2D.class);
+        mockingContext.checking(new Expectations() {
+            {
+                one(values).getColumnCount();
+                will(returnValue(100));
+                for (int i = 0; i < 100; i++) {
+                    one(values).getValue(0, i);
+                    will(returnValue(2));
+                }
+            }
+        });
+        double result = DataUtilities.calculateRowTotal(values, 0);
+
+        // verify
+        assertEquals("Sum of Large Number of Rows was unexpected.", 200, result, .000000001d);
+    }
+    
+    
+    //test to check if the sum is 0 when a column contains a null value
+    @Test
+    public void calculateRowTotalThatContainsANullValue() {
+    
+        // setup
+        Mockery mockingContext = new Mockery();
+        final Values2D values = mockingContext.mock(Values2D.class);
+        mockingContext.checking(new Expectations() {
+            {
+                one(values).getColumnCount();
+                will(returnValue(4));
+                one(values).getValue(0, 0);
+                will(returnValue(null));
+                one(values).getValue(0, 1);
+                will(returnValue(5));
+                one(values).getValue(0, 2);
+                will(returnValue(7.5));
+                one(values).getValue(0, 3);
+                will(returnValue(8.5));
+            }
+        });
+        double result = DataUtilities.calculateRowTotal(values, 0);
+        
+        // verify
+        assertEquals("Sum was unexpected when handling null value in Row.", 0, result, .000000001d);
+    }
+    
+    
+    //test to check if value when a column contains is an invalid index 
+    @Test
+    public void calculateRowTotalThatContainsInvalidRowIndex() {
+    
+        // setup
+        Mockery mockingContext = new Mockery();
+        final Values2D values = mockingContext.mock(Values2D.class);
+        mockingContext.checking(new Expectations() {
+            {
+                one(values).getColumnCount();
+                will(returnValue(2));
+                one(values).getValue(0, 0);
+                will(returnValue(6.0));
+                one(values).getValue(0, 1);
+                will(returnValue(4.0));
+            }
+            
+            
+        });
+    
+        
+        try {
+            double result = DataUtilities.calculateRowTotal(values, -4);
+            assertEquals("Sum was unexpected when handling invalid index in row.", 0, result, .000000001d);
+        }
+        
+        catch (Exception e) {
+            // Handle the exception here
+            assertTrue("Raised an exception" + e +". Should have return 0 as per documentation.", false);
+        }
+    }
+    
+    
+    // Test To check sum of a large indexed column
+    @Test
+    public void calculateRowTotalForLargeRowIndex() {
+        // Setup
+        Mockery mockingContext = new Mockery();
+        final Values2D values = mockingContext.mock(Values2D.class);
+        mockingContext.checking(new Expectations() {
+            {
+                one(values).getColumnCount();
+                will(returnValue(4));
+                one(values).getValue(100, 0);
+                will(returnValue(7.5));
+                one(values).getValue(100, 1);
+                will(returnValue(2.5));
+                one(values).getValue(100, 2);
+                will(returnValue(3.5));
+                one(values).getValue(100, 3);
+                will(returnValue(4.5));
+            }
+        });
+        double result = DataUtilities.calculateRowTotal(values, 100);
+
+        // Verify
+        assertEquals("Sum of Large Row Index was unexpected.", 18.0, result, .000000001d);
+    }
+    
+
+
+
+
+
+
+
+
 }
