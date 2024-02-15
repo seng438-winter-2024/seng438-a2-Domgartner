@@ -28,12 +28,11 @@ you have explained in the test strategy section //above
 
 # 4 How the team work/effort was divided and managed
 
-Text…
+- Each team member did 1 Range test function and 1 DataUtilities test function, where one member did 1 extra test of each.
 
 # 5 Difficulties encountered, challenges overcome, and lessons learned
-
-Text…
+- We didn't face any difficulties in this assignment as there was great documentation and notes from lectures!
 
 # 6 Comments/feedback on the lab itself
 
-Text…
+- As a group we really enjoyed this lab, it was helpful getting us familiar with the testing process, and using some concepts we learned in class in a real time environment. Additionally, we all learned a lot about JUnit test, and how to write them correctly. We found the lab document itself great and very easy to understand. Furthermore, the lab structure allowed for effective learning of testing methodologies and signified the importance of testing in a variety of methods. 
