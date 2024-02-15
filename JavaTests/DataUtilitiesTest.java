@@ -42,23 +42,8 @@ public class DataUtilitiesTest extends DataUtilities {
 
     }
 
-    // Test strategy: This set of tests verifies the behavior of
-    // getCumulativePercentages
-    // with different input values.
-    // Math:
-    // Key Value
-    // 0 5
-    // 1 9
-    // 2 2
-    //
-    // Returns:
-    //
-    // Key Value
-    // 0 0.3125 (5 / 16)
-    // 1 0.875 ((5 + 9) / 16)
-    // 2 1.0 ((5 + 9 + 2) / 16)
-
-
+ // -------- Method tested: createNumberArray() -----------
+    
     // Test the creation of number array with valid input. Checks the arrays length
     @Test
     public void testCreateNumberArrayLength() {
@@ -136,6 +121,24 @@ public class DataUtilitiesTest extends DataUtilities {
         java.lang.Number[] expected = {Double.MIN_VALUE, Double.MAX_VALUE};
         assertArrayEquals(expected, DataUtilities.createNumberArray(boundaryArray));
     }
+
+    // -------- Method tested: getCumulativePercentages() -----------
+    
+    // Test strategy: This set of tests verifies the behavior of
+    // getCumulativePercentages
+    // with different input values.
+    // Math:
+    // Key Value
+    // 0 5
+    // 1 9
+    // 2 2
+    //
+    // Returns:
+    //
+    // Key Value
+    // 0 0.3125 (5 / 16)
+    // 1 0.875 ((5 + 9) / 16)
+    // 2 1.0 ((5 + 9 + 2) / 16)
 
 
     // Test case 1: Testing with a simple scenario
