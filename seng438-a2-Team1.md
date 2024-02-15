@@ -2,12 +2,13 @@
 
 **Lab. Report \#2 – Requirements-Based Test Generation**
 
-| Group \#:      |     |
-| -------------- | --- |
-| Student Names: |     |
-|                |     |
-|                |     |
-|                |     |
+
+| Group Number: 1      |
+|-----------------|
+| Alexander Mclean                |   
+| Dominic Gartner              |   
+| Hamd Khan               |   
+| Noel Thomas                |   
 
 # 1 Introduction
 
