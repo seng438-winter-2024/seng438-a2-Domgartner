@@ -22,7 +22,37 @@ In this lab report, we will provide a detailed overview of the strategies employ
 
 # 2 Detailed description of unit test strategy
 
-// including the input partitions you have designed
+### Our Unit Test Strategy
+
+Our unit test strategy aimed to thoroughly validate the functionality of each function. When writing the unit test (especially in Range test) we choose to adopt a systematic approach to designing and executing unit tests, which ensured full coverage of the function being tested. We decided to test these 10 test below, 5 from the Range class and 5 from the DataUtilities class.
+![Alt text](/media/Range.png)
+![Alt text](/media/DataU.png)
+
+When developing the tests we used the information given above to create test that follow these strategy points below:
+- **Isolation:** Each unit is tested in isolation to ensure that its behavior is accurately assessed without interference from external dependencies. We utilize mocking frameworks or stubs to isolate the unit under test.
+- **Coverage:** We strive for high code coverage, aiming to exercise as many code paths within each unit as possible. This includes testing various execution paths, error handling scenarios, and boundary conditions.
+- **Edge Cases:** We identify and test edge cases that may not fit neatly into equivalence classes but are nonetheless critical for ensuring correctness and robustness. Edge cases include scenarios such as empty inputs, maximum-length inputs, or unexpected combinations of inputs.
+
+### **Our Test Case Design Approach**
+
+### **Boundary Value Analysis (BVA):**
+
+- **Boundary Value Analysis (BVA):** Within each equivalence class, we apply boundary value analysis to identify boundary conditions that are likely to reveal errors. Test cases are designed to include inputs at the boundaries of equivalence classes, ensuring thorough testing near critical points.
+
+### **Equivalence Classes (ECP)**
+
+- **Equivalence Classes (ECP):** Based on input partitioning, we identify equivalence classes representing sets of inputs that should produce the same output or behavior from the unit. This allows us to design test cases that represent each equivalence class, minimizing redundancy while maximizing coverage.
+
+### **Benefits and Drawbacks of Mocking:**
+
+**Benefits:**
+
+- **Isolation:** Mocking allows us to isolate the unit under test from its dependencies, enabling focused testing and easier identification of defects.
+- **Speed**: Mock testing can be faster than traditional testing methods because it eliminates the need for complex setup and teardown procedures and reduces the time required to run tests.
+
+**Drawbacks:**
+
+- **Complexity:** Mocking can introduce complexity, especially when dealing with complex dependencies or interactions between multiple components. We all noticed this when actually writing the tests
 
 # 3 Test cases developed
 
