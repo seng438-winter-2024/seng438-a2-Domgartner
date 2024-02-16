@@ -434,6 +434,164 @@ Expected: The expected result is a total of 18.0, computed from the values in th
 
 Type: BVT
 
+## Class: Range
+
+#### getLowerBound() method
+- postiveToNegativeRangelowerBoundReturnsCorrectValue()
+  - Description: Tests if the getLowerBound() method correctly gets the lower bound for a range of values negative to positive
+  - Expected Outcome: Lower Bound (-1)
+  - Testing Type: ECP
+
+- negativeRangelowerBoundReturnsCorrectValue()
+  - Description: Tests if the getLowerBound() method correctly gets the lower bound for a range of negative values
+  - Expected Outcome: Lower Bound (-100)
+  - Testing Type: ECP
+
+- PosNumRangelowerBoundReturnsCorrectValue()
+  - Description: Tests if the getLowerBound() method correctly gets the lower bound for a range of negative values
+  - Expected Outcome: Lower Bound (1)
+  - Testing Type: ECP
+
+- smallRangelowerBoundReturnsCorrectValue()
+  - Description: Tests if the getLowerBound() method correctly gets the lower bound for a small range of only 1 value
+  - Expected Outcome: Lower Bound (0)
+  - Testing Type: BVT
+
+- largeRangelowerBoundReturnsCorrectValue()
+  - Description: Tests if the getLowerBound() method correctly gets the lower bound for a large range max value integers
+  - Expected Outcome: Lower Bound (-2^32)
+  - Testing Type: BVT
+
+- doubleRangelowerBoundReturnsCorrectValue()
+  - Description: Tests if the getLowerBound() method correctly gets the lower bound for a range using double values
+  - Expected Outcome: Lower Bound (1.1)
+  - Testing Type: ECP
+
+#### getCentralValue() method
+- testgetCentralValueWithOddNumberofElements()
+  - Description: Tests if the getLowerBound() method correctly gets the lower bound for a range of values negative to positive
+  - Expected Outcome: central value (3)
+  - Testing Type: ECP
+
+- testgetCentralValueWithEvenNumberofElements()
+  - Description: Tests the getCentralValue method correctly gets the central value for a range with an even number of elements
+  - Expected Outcome: central value (3.5)
+  - Testing Type: ECP
+
+- testgetCentralValueNegativeRange()
+  - Description: Tests the getCentralValue method correctly gets the central value for a range with negative values
+  - Expected Outcome: central value (-50.5)
+  - Testing Type: ECP
+
+- testgetCentralWithSmallRange()
+  - Description: Tests the getCentralValue method correctly gets the central value for a range of only 1 element (smallest range possible)
+  - Expected Outcome: central value (0)
+  - Testing Type: BVT
+ 
+- testgetCentralWithLargeRange()
+  - Description: Tests the getCentralValue method correctly gets the central value for the largest range possible
+  - Expected Outcome: central value (-0.5)
+  - Testing Type: BVT
+
+- testgetCentralWithDoubleValues()
+  - Description: Tests the getCentralValue method correctly gets the central value for a range of double values
+  - Expected Outcome: central value (3.85)
+  - Testing Type: ECP
+
+- testgetCentralWithPositiveToNegativeRange()
+  - Description: Tests the getCentralValue method correctly gets the central value for a range of negative to positive values
+  - Expected Outcome: central value (0)
+  - Testing Type: ECP
+
+- testgetCentralWithInvalidRange()
+  - Description: Tests the getCentralValue method on an invalid range
+  - Expected Outcome: Exception is thrown for invalid range
+  - Testing Type: ECP
+
+#### constrain() method
+- constrainShouldEqualAPositiveValue()
+  - Description: Test case to ensure the constrain method returns a positive value within the specified range
+  - Expected Outcome: constrained value (30.3)
+  - Testing Type: ECP
+
+- constrainShouldEqualANegativeValue()
+  - Description: Test case to ensure the constrain method returns a negative value within the specified range
+  - Expected Outcome: constrained value (-30.3)
+  - Testing Type: ECP
+
+- constrainShouldEqualZero()
+  - Description: Test case to ensure the constrain method returns zero within the specified range
+  - Expected Outcome: constrained value (0)
+  - Testing Type: ECP
+
+- constrainShouldBeHigherThanUpperBoundaryValue()
+  - Description: Test case to ensure the constrain method returns the upper boundary value within the specified range
+  - Expected Outcome: constrained value (100)
+  - Testing Type: BVT
+
+- constrainShouldBeLowerThanLowerBoundaryValue()
+  - Description: Test case to ensure the constrain method returns the lower boundary value within the specified range
+  - Expected Outcome: constrained value (-100)
+  - Testing Type: BVT
+
+- constrainEqualsLowerBoundaryValue()
+  - Description: Test case to ensure the constrain method returns the lower boundary value within the specified range
+  - Expected Outcome: constrained value (-100)
+  - Testing Type: BVT
+
+- constrainEqualsUpperBoundaryValue()
+  - Description: Test case to ensure the constrain method returns the upper boundary value within the specified range.
+  - Expected Outcome: constrained value (100)
+  - Testing Type: BVT
+
+- constrainCloseToUpperBoundaryValue()
+  - Description: Test case to ensure a constrain close to upper boundary value returns the constrain
+  - Expected Outcome: constrained value (99.9)
+  - Testing Type: BVT
+
+- constrainCloseToLowerBoundaryValue()
+  - Description: Test case to ensure a constrain close to lower boundary value returns the constrain
+  - Expected Outcome: constrained value (1.99)
+  - Testing Type: BVT
+
+#### intersects() method
+- testCompletelyOverlappingRanges()
+
+  - Description: Test two ranges where one completely overlaps the other
+  - Expected Outcome: boolean value (true)
+  - Testing Type: ECP
+
+- testPartiallyOverlappingRanges()
+  - Description: Test two ranges where they partially overlap
+  - Expected Outcome: boolean value (true)
+  - Testing Type: ECP
+
+- testPartiallyOverlappingRanges()
+  - Description: Test two ranges where they partially overlap
+  - Expected Outcome: boolean value (true)
+  - Testing Type: ECP
+
+- testRangesWithSharedUpperBoundary()
+  - Description: Tests the intersects() method of Range class with two different ranges that share an upper endpoint
+  - Expected Outcome: boolean value (true)
+  - Testing Type: BVT
+
+- testRangesWithSameBoundaries()
+  - Description: Test two ranges with the same range
+  - Expected Outcome: boolean value (true)
+  - Testing Type: BVT
+
+- testRangesCompletelyBefore()
+  - Description: Test two ranges where one range is completely before the other
+  - Expected Outcome: boolean value (False)
+  - Testing Type: ECP
+
+- testRangesCompletelyAfter()
+  - Description: Test two ranges where one range is completely after the other
+  - Expected Outcome: boolean value (False)
+  - Testing Type: ECP
+
+
 # 4 How the team work/effort was divided and managed
 - To begin the assignment, each group member worked through steps 1.1 to 2.1.4 individually. This allowed each group member to become familiarized with the software and the package structure of the eclipse IDE. When developing the unit tests, we decided to split thte tests by method. Each group member chose one method to test in the Range class and one in the DataUtilities class. Each member looked closely at the documentation provided for the method of their choosing and designed and wrote the tests accordingly. Two members tested one additional method each as we were required to test a total of 10 methods between the two classes. Once the test development was complete, we looked over the completed tests together as a group.
 
