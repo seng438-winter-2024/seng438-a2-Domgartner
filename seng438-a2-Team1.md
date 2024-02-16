@@ -35,9 +35,9 @@ When developing the tests we used the information given above to create test tha
 
 ## **Our Test Case Design Approach**
 
-### **Boundary Value Analysis (BVA):**
+### **Boundary Value Test (BVT):**
 
-- **Boundary Value Analysis (BVA):** Within each equivalence class, we apply boundary value analysis to identify boundary conditions that are likely to reveal errors. Test cases are designed to include inputs at the boundaries of equivalence classes, ensuring thorough testing near critical points.
+- **Boundary Value Test (BVT):** Within each equivalence class, we apply boundary value analysis to identify boundary conditions that are likely to reveal errors. Test cases are designed to include inputs at the boundaries of equivalence classes, ensuring thorough testing near critical points.
 
 ### **Equivalence Classes (ECP)**
 
