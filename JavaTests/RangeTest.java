@@ -196,7 +196,7 @@ public class RangeTest {
     @Test
     public void constrainShouldEqualAPositiveValue() {
         assertEquals("The constrain value of 30.3 in range 1 to 100 should be 30.3",
-                30.3, posNumRange.constrain(30.3), .000000001d);
+                30.3, PosNumRange.constrain(30.3), .000000001d);
     }
 
     // Test case to ensure the constrain method returns a negative value within the
@@ -214,7 +214,7 @@ public class RangeTest {
     @Test
     public void constrainShouldEqualZero() {
         assertEquals("The constrain value of 0 in range -1 to 1 should be 0",
-                0, negToPosRange.constrain(0), .000000001d);
+                0, posToNegRange.constrain(0), .000000001d);
     }
 
     // Test case to ensure the constrain method returns the upper boundary value
@@ -223,7 +223,7 @@ public class RangeTest {
     @Test
     public void constrainShouldBeHigherThanUpperBoundaryValue() {
         assertEquals("The constrain value of 10000 in range 1 to 100 should be 100",
-                100, posNumRange.constrain(10000), .000000001d);
+                100, PosNumRange.constrain(10000), .000000001d);
     }
 
     // Test case to ensure the constrain method returns the lower boundary value
@@ -250,7 +250,7 @@ public class RangeTest {
     @Test
     public void constrainEqualsUpperBoundaryValue() {
         assertEquals("The constrain value of 100 in range 1 to 100 should be 100",
-                100, posNumRange.constrain(100), .000000001d);
+                100, PosNumRange.constrain(100), .000000001d);
     }
 
     // Test case to ensure a constrain close to upper boundary value returns the
@@ -259,7 +259,7 @@ public class RangeTest {
     @Test
     public void constrainCloseToUpperBoundaryValue() {
         assertEquals("The constrain value of 99.9 in range 1 to 100 should be 99.9",
-                99.9, posNumRange.constrain(99.9), .000000001d);
+                99.9, PosNumRange.constrain(99.9), .000000001d);
     }
 
     // Test case to ensure a constrain close to lower boundary value returns the
@@ -268,7 +268,7 @@ public class RangeTest {
     @Test
     public void constrainCloseToLowerBoundaryValue() {
         assertEquals("The constrain value of 1.99 in range 1 to 100 should be 1.99",
-                1.99, posNumRange.constrain(1.99), .000000001d);
+                1.99, PosNumRange.constrain(1.99), .000000001d);
     }
 
     // ----------- Testing intersects Function ---------------
@@ -287,7 +287,7 @@ public class RangeTest {
     @Test
     public void testPartiallyOverlappingRanges() {
         assertTrue("When one range partially overlaps the other, intersects() should return true.",
-                posNumRange.intersects(-10.3, 10.4));
+        		PosNumRange.intersects(-10.3, 10.4));
 
     }
 
@@ -298,7 +298,7 @@ public class RangeTest {
     public void testRangesWithSharedUpperBoundary() {
         assertTrue(
                 "When two different ranges share an upper endpoint with one another, intersects() should return true.",
-                posNumRange.intersects(-5, 100));
+                PosNumRange.intersects(-5, 100));
     }
 
     // Test two ranges with the same range
@@ -307,7 +307,7 @@ public class RangeTest {
     public void testRangesWithSameBoundaries() {
         assertTrue(
                 "When two different ranges share an both endpoints with one another, intersects() should return true.",
-                negToPosRange.intersects(-1, 1));
+                posToNegRange.intersects(-1, 1));
     }
 
     // Test two ranges where one range is completely before the other
@@ -316,7 +316,7 @@ public class RangeTest {
     public void testRangesCompletelyBefore() {
 
         assertFalse("When one range is completey before the other Range, intersects() should return False.",
-                negToPosRange.intersects(-10.5, -5.6));
+        		posToNegRange.intersects(-10.5, -5.6));
     }
 
     // Test two ranges where one range is completely after the other
@@ -325,7 +325,7 @@ public class RangeTest {
     public void testRangesCompletelyAfter() {
 
         assertFalse("When one range is completey after the other Range, intersects() should return False.",
-                negToPosRange.intersects(10.4, 30.6));
+        		posToNegRange.intersects(10.4, 30.6));
     }
 
     // ----------- Testing combine Function ---------------
