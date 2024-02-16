@@ -591,6 +591,57 @@ Type: BVT
   - Expected Outcome: boolean value (False)
   - Testing Type: ECP
 
+#### combine() method
+- combineValidrangeAndNullRange()
+  - Description: Test if one valid range and a null range can be combined
+  - Expected Outcome: First Range → (0,1)
+  - Testing Type: ECP
+
+- combineNullrangeAndValidRange()
+  - Description: Test if a first argument of a valid range and a second argument of a null range can be combined
+  - Expected Outcome: Second Range → (0,1)
+  - Testing Type: ECP
+
+- combineNullRanges()
+  - Description: Test if both arguments of a null range can be combined
+  - Expected Outcome: Null
+  - Testing Type: ECP
+
+- combineEmptyRangeandValidRange()
+  - Description: Test if a valid range and an empty range can be combined
+  - Expected Outcome: Subsume of Valid and Empty Range → (0,1)
+  - Testing Type: BVT
+
+- combineEmptyRanges()
+  - Description: Test if two non identical ranges (both empty) can be combined
+  - Expected Outcome: EmptyRange→ (0,0)
+  - Testing Type: ECP
+
+- combineValidRangeandSubsetRange()
+  - Description: Test if superset and subset ranges can be combined
+  - Expected Outcome: Larger Superset → (-10,10)
+  - Testing Type: ECP
+
+- combineSubsetRangeandValidRange()
+  - Description: Test if superset and subset ranges can be combined with different argument order
+  - Expected Outcome: Larger Superset → (-10,10)
+  - Testing Type: ECP
+
+- combineTouchingValidRanges()
+  - Description: Test if touching ranges can be combined
+  - Expected Outcome: Combined Superset → (0,15)
+  - Testing Type: ECP
+
+- combineOverlappingValidRanges()
+  - Description: Test if overlapping ranges can be combined
+  - Expected Outcome: Combined Superset → (0,15)
+  - Testing Type: ECP
+
+- combineIdenticalValidRanges()
+  - Description: Test if Identical ranges can be combined
+  - Expected Outcome: Third Identica Range  → (1,5)
+  - Testing Type: BVT
+
 
 # 4 How the team work/effort was divided and managed
 - To begin the assignment, each group member worked through steps 1.1 to 2.1.4 individually. This allowed each group member to become familiarized with the software and the package structure of the eclipse IDE. When developing the unit tests, we decided to split thte tests by method. Each group member chose one method to test in the Range class and one in the DataUtilities class. Each member looked closely at the documentation provided for the method of their choosing and designed and wrote the tests accordingly. Two members tested one additional method each as we were required to test a total of 10 methods between the two classes. Once the test development was complete, we looked over the completed tests together as a group.
