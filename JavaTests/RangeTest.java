@@ -353,7 +353,7 @@ public class RangeTest {
         Range rangeB = new Range(0, 1);
 
         try {
-            Range res = Range.combine(rangeB, null);
+            Range res = Range.combine(null, rangeB);
             assertEquals(
                     "If first argument is a valid range, and the second is null, the second range should be returned.",
                     rangeB, res);
