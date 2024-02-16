@@ -19,11 +19,11 @@ public class DataUtilitiesTest extends DataUtilities {
     private Mockery mockingContext;
     private Values2D values;
     private KeyedValues data;
-    double[] posArray;
-    double[] emptyArray;
-    double[] negArray;
-    double[] mixedArray;
-    double[] boundaryArray;
+    private double[] posArray;
+    private double[] emptyArray;
+    private double[] negArray;
+    private double[] mixedArray;
+    private double[] boundaryArray;
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -34,17 +34,18 @@ public class DataUtilitiesTest extends DataUtilities {
         mockingContext = new Mockery();
         values = mockingContext.mock(Values2D.class);
         data = mockingContext.mock(KeyedValues.class);
-        posArray = new double[]{1.8, 3, 2};
-        emptyArray = new double[]{};
-        negArray = new double[]{-6.0, -4.0, -8.0, -21.0, -41.0};
-        mixedArray = new double[]{-1.0, 2.0, -3.0, 4.0, -5.0};
-        boundaryArray = new double[]{Double.MIN_VALUE, Double.MAX_VALUE};
+        posArray = new double[] {1.8, 3, 2};
+        emptyArray = new double[] {};
+        negArray = new double[] {-6.0, -4.0, -8.0, -21.0, -41.0};
+        mixedArray = new double[] {-1.0, 2.0, -3.0, 4.0, -5.0};
+        boundaryArray = new double[] {Double.MIN_VALUE, Double.MAX_VALUE};
 
     }
 
  // -------- Method tested: createNumberArray() -----------
     
     // Test the creation of number array with valid input. Checks the arrays length
+    // type: ECP
     @Test
     public void testCreateNumberArrayLength() {
         java.lang.Number[] result = DataUtilities.createNumberArray(posArray);
@@ -52,6 +53,7 @@ public class DataUtilitiesTest extends DataUtilities {
     }
 
     // Test the creation of number array with valid input. Checks the values of the elements
+    // type: ECP
     @Test
     public void testCreateNumberArrayElementsValue() {
         java.lang.Number[] result = DataUtilities.createNumberArray(posArray);
@@ -61,6 +63,7 @@ public class DataUtilitiesTest extends DataUtilities {
     }
 
     // Test the creation of number array with an empty input array
+    // type: BVT
     @Test
     public void testCreateNumberArrayWithEmptyArray() {
         java.lang.Number[] result = DataUtilities.createNumberArray(emptyArray);
@@ -69,6 +72,7 @@ public class DataUtilitiesTest extends DataUtilities {
     }
 
     // Test the creation of number array with negative values. Checks the arrays length
+    // type: ECP
     @Test
     public void testCreateNumberArrayWithNegativeValuesArrayLength() {
         java.lang.Number[] result = DataUtilities.createNumberArray(negArray);
@@ -77,6 +81,7 @@ public class DataUtilitiesTest extends DataUtilities {
     }
 
     // Test the creation of number array with negative values. Checks the values of the elements
+    // type: ECP
     @Test
     public void testCreateNumberArrayWithNegativeValuesArrayElements() {
         java.lang.Number[] result = DataUtilities.createNumberArray(negArray);
@@ -86,6 +91,7 @@ public class DataUtilitiesTest extends DataUtilities {
     }
 
     // Test the creation of number array with mixed values. Checks the arrays length
+    // type: ECP
     @Test
     public void testCreateNumberArrayWithMixedValuesArrayLength() {
         java.lang.Number[] result = DataUtilities.createNumberArray(mixedArray);
@@ -94,6 +100,7 @@ public class DataUtilitiesTest extends DataUtilities {
     }
 
     // Test the creation of number array with mixed values. Checks the values of the elements
+    // type: ECP
     @Test
     public void testCreateNumberArrayWithMixedValuesArrayElements() {
         java.lang.Number[] result = DataUtilities.createNumberArray(mixedArray);
@@ -103,12 +110,14 @@ public class DataUtilitiesTest extends DataUtilities {
     }
 
     // Test the creation of number array with null input data, expecting an IllegalArgumentException
+    // type: BVT
     @Test(expected = IllegalArgumentException.class)
     public void testCreateNumberArrayNull() {
         DataUtilities.createNumberArray(null);
     }
 
     // Test the creation of number array with invalid data, expecting an InvalidParameterException
+    // type: ECP
     @Test(expected = InvalidParameterException.class)
     public void testCreateNumberArrayInvalidData() {
         double[] invalidData = {Double.POSITIVE_INFINITY, Double.NaN, Double.NEGATIVE_INFINITY};
@@ -116,6 +125,7 @@ public class DataUtilitiesTest extends DataUtilities {
     }
 
     // Test the creation of number array with boundary values (min and max values of double type)
+    // type: BVT
     @Test
     public void testCreateNumberArrayBoundary() {
         java.lang.Number[] expected = {Double.MIN_VALUE, Double.MAX_VALUE};
@@ -142,6 +152,7 @@ public class DataUtilitiesTest extends DataUtilities {
 
 
     // Test case 1: Testing with a simple scenario
+    // type: ECP
     @Test
     public void testGetCumulativePercentagesForTwoValues1() {
         mockingContext.checking(new Expectations() {
@@ -164,9 +175,7 @@ public class DataUtilitiesTest extends DataUtilities {
                 will(returnValue(2));
             }
         });
-
         KeyedValues result = DataUtilities.getCumulativePercentages(data);
-
         // Verify that the cumulative percentage for the first value is 0.3125
         assertEquals(0.3125, result.getValue(0));
     }
@@ -194,9 +203,7 @@ public class DataUtilitiesTest extends DataUtilities {
                 will(returnValue(2));
             }
         });
-
         KeyedValues result = DataUtilities.getCumulativePercentages(data);
-
         // Verify that the cumulative percentage for the second value is 0.875
         assertEquals(0.875, result.getValue(1));
     }
@@ -224,9 +231,7 @@ public class DataUtilitiesTest extends DataUtilities {
                 will(returnValue(2));
             }
         });
-
         KeyedValues result = DataUtilities.getCumulativePercentages(data);
-
         // Verify that the cumulative percentage for the third value is 1.0
         assertEquals(1.0, result.getValue(2));
     }
@@ -270,9 +275,7 @@ public class DataUtilitiesTest extends DataUtilities {
                 will(returnValue(5));
             }
         });
-
         KeyedValues result = DataUtilities.getCumulativePercentages(data);
-
         // Verify that the cumulative percentage for the first value is 0.7
         assertEquals(0.7, result.getValue(0));
     }
@@ -300,9 +303,7 @@ public class DataUtilitiesTest extends DataUtilities {
                 will(returnValue(5));
             }
         });
-
         KeyedValues result = DataUtilities.getCumulativePercentages(data);
-
         // Verify that the cumulative percentage for the second value is 0.5
         assertEquals(0.5, result.getValue(1));
     }
@@ -330,23 +331,24 @@ public class DataUtilitiesTest extends DataUtilities {
                 will(returnValue(5));
             }
         });
-
         KeyedValues result = DataUtilities.getCumulativePercentages(data);
-
         // Verify that the cumulative percentage for the third value is 0.5
         assertEquals(0.5, result.getValue(2));
     }
 
 
-
+	// ---------- Tests for calculateColumnTotal ----------
+	
     	/** Test strategy: 
 	 This set of tests verifies the behavior of calculateColumnTotal
 	 with different input values, including negative numbers, null values, and edge cases.
 	 
 	 returns:
 	 	The sum of a row in a particular column
-**/
-	
+	**/
+
+	// This test verifies the calculation of the column total for a dataset with two values.
+	// type: ECP
 	 @Test
 	 public void calculateColumnTotalForTwoValues() {
 	     // setup
@@ -360,16 +362,15 @@ public class DataUtilitiesTest extends DataUtilities {
 	             will(returnValue(7.5));
 	             one(values).getValue(1, 0);
 	             will(returnValue(2.5));
-	         
 	         }
 	     });
 	     double result = DataUtilities.calculateColumnTotal(values, 0);
 	     // verify
 	     assertEquals(result, 10.0, .000000001d);
-	     // tear-down: NONE in this test method
 	 }
 	 
 	 // Test To check columnTotal for 5 negative values in a column
+	 // type: ECP
 	 @Test
 	 public void calculateColumnTotalFor5NegativeValues() {
 	     // Setup
@@ -389,16 +390,14 @@ public class DataUtilitiesTest extends DataUtilities {
 	             will(returnValue(-4.5));
 	             one(values).getValue(4, 0);
 	             will(returnValue(-5.5));
-	             
 	         }
 	     });
 	     double result = DataUtilities.calculateColumnTotal(values, 0);
-
-	     // Verify
 	     assertEquals("Sum of 5 negative values was unexpected.", -23.5, result, .000000001d);
 	 }
 
 	 // Test To check sum of mixed negative and positive values in a column
+	 // type: ECP
 	 @Test
 	 public void calculateColumnTotalForMixedPositiveAndNegativeValues() {
 	     // Setup
@@ -419,12 +418,11 @@ public class DataUtilitiesTest extends DataUtilities {
 	         }
 	     });
 	     double result = DataUtilities.calculateColumnTotal(values, 0);
-
-	     // Verify
 	     assertEquals("Sum of mixed positive and negative values was unexpected.", -6.0, result, .000000001d);
 	 }
 	 
 	 // Test to check if an empty matrix of rows and columns can be handled
+	 // type: BVT
 	  @Test
 	    public void calculateColumnTotalForEmptyData() {
 	    	// setup
@@ -437,11 +435,11 @@ public class DataUtilitiesTest extends DataUtilities {
 		         }
 		     });
 	    	double result = DataUtilities.calculateColumnTotal(values, 0);
-	    	// verify
 	    	assertEquals("Sum was unexpected when handling an empty matrix.", 0, result, .000000001d);	
 	    }
 	 
 	 // Test to check if a large number of rows can be handled
+	 // type: BVT
 	 @Test
 	 public void calculateColumnTotalForLargeNumberOfRows() {
 	     // setup
@@ -458,16 +456,13 @@ public class DataUtilitiesTest extends DataUtilities {
 	         }
 	     });
 	     double result = DataUtilities.calculateColumnTotal(values, 0);
-
-	     // verify
 	     assertEquals("Sum of Large Number of Rows was unexpected.", 200, result, .000000001d);
 	 }
 	 
-	 
 	 //test to check if the sum is 0 when a column contains a null value
-     @Test
+	 // type: ECP
+     	 @Test
 	 public void calculateColumnTotalThatContainsANullValue() {
-	 
 	     // setup
 	     Mockery mockingContext = new Mockery();
 	     final Values2D values = mockingContext.mock(Values2D.class);
@@ -486,16 +481,13 @@ public class DataUtilitiesTest extends DataUtilities {
 	         }
 	     });
 	     double result = DataUtilities.calculateColumnTotal(values, 0);
-	     
-	     // verify
 	     assertEquals("Sum was unexpected when handling null value in column.", 0, result, .000000001d);
 	 }
      
-     
-     //test to check if value when a column contains is an invalid index 
-     @Test
+     	 // test to check if value when a column contains is an invalid index 
+	 // type: BVT
+     	 @Test
 	 public void calculateColumnTotalThatContainsInvalidColumnIndex() {
-	 
 	     // setup
 	     Mockery mockingContext = new Mockery();
 	     final Values2D values = mockingContext.mock(Values2D.class);
@@ -508,11 +500,7 @@ public class DataUtilitiesTest extends DataUtilities {
 	             one(values).getValue(1, 0);
 	             will(returnValue(4.0));
 	         }
-	            
-	         
 	     });
-	    
-	     
 	     try {
 	    	 double result = DataUtilities.calculateColumnTotal(values, -4);
 	    	 assertEquals("Sum was unexpected when handling invalud index in column.", 0, result, .000000001d);
@@ -521,12 +509,10 @@ public class DataUtilitiesTest extends DataUtilities {
 	            // Handle the exception here
 	    	 assertTrue("Raised an exception" + e +". Should have return 0 as per documentation.", false);
 	        }
-	     
-	     
 	   }
      
-     
-     // Test To check sum of a large indexed column
+     	// Test To check sum of a large indexed column
+	// type: BVT
 	 @Test
 	 public void calculateColumnTotalForLargeColumnIndex() {
 	     // Setup
@@ -547,35 +533,22 @@ public class DataUtilitiesTest extends DataUtilities {
 	         }
 	     });
 	     double result = DataUtilities.calculateColumnTotal(values, 100);
-
-	     // Verify
 	     assertEquals("Sum of Large Column Index was unexpected.", 18.0, result, .000000001d);
 	 }
-     
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
 
 
+	// --------- tests for calculateRowTotal() method ------------
+	
+	/** Test strategy: 
+	 This set of tests verifies the behavior of calculateRowTotal
+	with different input values, including negative numbers, null values, and edge cases.
+	
+	returns:
+	The sum of a Column in a particular row
+	**/
 
-/** Test strategy: 
- This set of tests verifies the behavior of calculateRowTotal
-with different input values, including negative numbers, null values, and edge cases.
-
-returns:
-The sum of a Column in a particular row
-**/
-
+	// Test to calculate the total for a row with two values
+	// type: ECP
     @Test
     public void calculateRowTotalForTwoValues() {
         // setup
@@ -589,20 +562,14 @@ The sum of a Column in a particular row
                 will(returnValue(7.5));
                 one(values).getValue(0, 1);
                 will(returnValue(2.5));
-            
             }
         });
         double result = DataUtilities.calculateRowTotal(values, 0);
-        // verify
         assertEquals(result, 10.0, .000000001d);
-        // tear-down: NONE in this test method
     }
     
-    
-    
-
-    
     // Test To check rowTotal for 5 negative values in a row
+    // type: ECP
     @Test
     public void calculateRowTotalFor5NegativeValues() {
         // Setup
@@ -622,16 +589,14 @@ The sum of a Column in a particular row
                 will(returnValue(-4.5));
                 one(values).getValue(0, 4);
                 will(returnValue(-5.5));
-                
             }
         });
         double result = DataUtilities.calculateRowTotal(values, 0);
-
-        // Verify
         assertEquals("Sum of 5 negative values was unexpected.", -23.5, result, .000000001d);
     }
 
     // Test To check sum of mixed negative and positive values in a row
+    // type: ECP
     @Test
     public void calculateRowTotalForMixedPositiveAndNegativeValues() {
         // Setup
@@ -652,12 +617,11 @@ The sum of a Column in a particular row
             }
         });
         double result = DataUtilities.calculateRowTotal(values, 0);
-
-        // Verify
         assertEquals("Sum of mixed positive and negative values was unexpected.", -6.0, result, .000000001d);
     }
     
     // Test to check if an empty matrix of rows and columns can be handled
+    // type: BVT
     @Test
     public void calculateRowTotalForEmptyData() {
         // setup
@@ -670,11 +634,11 @@ The sum of a Column in a particular row
                 }
             });
         double result = DataUtilities.calculateRowTotal(values, 0);
-        // verify
         assertEquals("Sum was unexpected when handling an empty matrix.", 0, result, .000000001d);	
     }
     
     // Test to check if a large number of rows can be handled
+    // type: BVT
     @Test
     public void calculateRowTotalForLargeNumberOfColumns() {
         // setup
@@ -691,16 +655,13 @@ The sum of a Column in a particular row
             }
         });
         double result = DataUtilities.calculateRowTotal(values, 0);
-
-        // verify
         assertEquals("Sum of Large Number of Rows was unexpected.", 200, result, .000000001d);
     }
     
-    
     //test to check if the sum is 0 when a column contains a null value
+    // type: ECP
     @Test
     public void calculateRowTotalThatContainsANullValue() {
-    
         // setup
         Mockery mockingContext = new Mockery();
         final Values2D values = mockingContext.mock(Values2D.class);
@@ -719,16 +680,13 @@ The sum of a Column in a particular row
             }
         });
         double result = DataUtilities.calculateRowTotal(values, 0);
-        
-        // verify
         assertEquals("Sum was unexpected when handling null value in Row.", 0, result, .000000001d);
     }
     
-    
     //test to check if value when a column contains is an invalid index 
+    // type: BVT
     @Test
     public void calculateRowTotalThatContainsInvalidRowIndex() {
-    
         // setup
         Mockery mockingContext = new Mockery();
         final Values2D values = mockingContext.mock(Values2D.class);
@@ -741,24 +699,19 @@ The sum of a Column in a particular row
                 one(values).getValue(0, 1);
                 will(returnValue(4.0));
             }
-            
-            
         });
-    
-        
         try {
             double result = DataUtilities.calculateRowTotal(values, -4);
             assertEquals("Sum was unexpected when handling invalid index in row.", 0, result, .000000001d);
         }
-        
         catch (Exception e) {
             // Handle the exception here
             assertTrue("Raised an exception" + e +". Should have return 0 as per documentation.", false);
         }
     }
     
-    
     // Test To check sum of a large indexed column
+    // type: BVT
     @Test
     public void calculateRowTotalForLargeRowIndex() {
         // Setup
@@ -779,17 +732,7 @@ The sum of a Column in a particular row
             }
         });
         double result = DataUtilities.calculateRowTotal(values, 100);
-
-        // Verify
         assertEquals("Sum of Large Row Index was unexpected.", 18.0, result, .000000001d);
     }
-    
-
-
-
-
-
-
-
 
 }
