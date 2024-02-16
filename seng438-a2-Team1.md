@@ -22,7 +22,7 @@ In this lab report, we will provide a detailed overview of the strategies employ
 
 # 2 Detailed description of unit test strategy
 
-### Our Unit Test Strategy
+## Our Unit Test Strategy
 
 Our unit test strategy aimed to thoroughly validate the functionality of each function. When writing the unit test (especially in Range test) we choose to adopt a systematic approach to designing and executing unit tests, which ensured full coverage of the function being tested. We decided to test these 10 test below, 5 from the Range class and 5 from the DataUtilities class.
 ![Alt text](/media/Range.png)
@@ -33,7 +33,7 @@ When developing the tests we used the information given above to create test tha
 - **Coverage:** We strive for high code coverage, aiming to exercise as many code paths within each unit as possible. This includes testing various execution paths, error handling scenarios, and boundary conditions.
 - **Edge Cases:** We identify and test edge cases that may not fit neatly into equivalence classes but are nonetheless critical for ensuring correctness and robustness. Edge cases include scenarios such as empty inputs, maximum-length inputs, or unexpected combinations of inputs.
 
-### **Our Test Case Design Approach**
+## **Our Test Case Design Approach**
 
 ### **Boundary Value Analysis (BVA):**
 
@@ -43,7 +43,7 @@ When developing the tests we used the information given above to create test tha
 
 - **Equivalence Classes (ECP):** Based on input partitioning, we identify equivalence classes representing sets of inputs that should produce the same output or behavior from the unit. This allows us to design test cases that represent each equivalence class, minimizing redundancy while maximizing coverage.
 
-### **Benefits and Drawbacks of Mocking:**
+## **Benefits and Drawbacks of Mocking:**
 
 **Benefits:**
 
