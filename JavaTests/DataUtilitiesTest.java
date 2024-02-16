@@ -64,7 +64,7 @@ public class DataUtilitiesTest extends DataUtilities {
                 { 0.0, 0.0 }
         };
 
-        assertArrayEquals(expected, DataUtilities.createNumberArray2D(data));
+        assertArrayEquals("creating an arrow with zeros did not return the expected array", expected, DataUtilities.createNumberArray2D(data));
     }
 
     // Objective: Verifies the function's ability to process arrays containing
@@ -83,7 +83,7 @@ public class DataUtilitiesTest extends DataUtilities {
                 { -100.0, -1000.0 }
         };
 
-        assertArrayEquals(expected, DataUtilities.createNumberArray2D(data));
+        assertArrayEquals("creating an arrow with negatives did not return the expected array", expected, DataUtilities.createNumberArray2D(data));
     }
 
     // Objective: Tests the function with an array that includes a mix of positive,
@@ -102,7 +102,7 @@ public class DataUtilitiesTest extends DataUtilities {
                 { Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY }
         };
 
-        assertArrayEquals(expected, DataUtilities.createNumberArray2D(data));
+        assertArrayEquals("creating an arrow with mixed values did not return the expected array", expected, DataUtilities.createNumberArray2D(data));
     }
 
     // Objective: Checks the function's handling of a minimal array size (single
@@ -119,7 +119,7 @@ public class DataUtilitiesTest extends DataUtilities {
                 { 42.0 }
         };
 
-        assertArrayEquals(expected, DataUtilities.createNumberArray2D(data));
+        assertArrayEquals("creating a single element array did not return the expected array", expected, DataUtilities.createNumberArray2D(data));
     }
 
     // Objective: Validates the function with a simple 2x2 array of positive
@@ -139,7 +139,7 @@ public class DataUtilitiesTest extends DataUtilities {
                 { 1.0, 10.0 }
         };
 
-        assertArrayEquals(expected, DataUtilities.createNumberArray2D(data));
+        assertArrayEquals("creating a 2x2 array did not return the expected array", expected, DataUtilities.createNumberArray2D(data));
     }
 
     // Objective: Assesses the function's performance with a 3x3 array, testing its
@@ -160,7 +160,7 @@ public class DataUtilitiesTest extends DataUtilities {
                 { 1.0, 10.0, 40.0 }
         };
 
-        assertArrayEquals(expected, DataUtilities.createNumberArray2D(data));
+        assertArrayEquals("creating a 3x3 array did not return the expected array", expected, DataUtilities.createNumberArray2D(data));
     }
 
     // Objective: Examines the function's ability to process a rectangular
@@ -179,7 +179,7 @@ public class DataUtilitiesTest extends DataUtilities {
                 { 1.0, 10.0, 30.0 },
         };
 
-        assertArrayEquals(expected, DataUtilities.createNumberArray2D(data));
+        assertArrayEquals("creating a non square array did not return the expected array", expected, DataUtilities.createNumberArray2D(data));
     }
 
     // Objective: Tests the function with arrays having rows of unequal lengths,
@@ -199,7 +199,7 @@ public class DataUtilitiesTest extends DataUtilities {
                 { 1.0, 10.0 },
         };
 
-        assertArrayEquals(expected, DataUtilities.createNumberArray2D(data));
+        assertArrayEquals("creating a non uniform shape array did not return the expected array", expected, DataUtilities.createNumberArray2D(data));
     }
 
     // Objective: Validates the function's capability to handle a large 100x100
@@ -236,7 +236,7 @@ public class DataUtilitiesTest extends DataUtilities {
 
         java.lang.Number[][] expected = {};
 
-        assertArrayEquals(expected, DataUtilities.createNumberArray2D(data));
+        assertArrayEquals("creating an array of empty arguments did not give the expected array", expected, DataUtilities.createNumberArray2D(data));
     }
 
     // Objective: Checks the function's error handling when given invalid data (NaN
@@ -277,7 +277,7 @@ public class DataUtilitiesTest extends DataUtilities {
         double[][] data = { { Double.MAX_VALUE, Double.MAX_VALUE } };
         java.lang.Number[][] expected = { { Double.MAX_VALUE, Double.MAX_VALUE } };
 
-        assertArrayEquals(expected, DataUtilities.createNumberArray2D(data));
+        assertArrayEquals("Creating an array with max values did not give the expected array", expected, DataUtilities.createNumberArray2D(data));
     }
 
     // Objective: Examines the function's response to positive infinity values,
@@ -288,7 +288,7 @@ public class DataUtilitiesTest extends DataUtilities {
         double[][] data = { { Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY } };
         java.lang.Number[][] expected = { { Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY } };
 
-        assertArrayEquals(expected, DataUtilities.createNumberArray2D(data));
+        assertArrayEquals("Creating an array of positive infinity values did not give the expected array", expected, DataUtilities.createNumberArray2D(data));
     }
 
     // Objective: Evaluates the function with the smallest positive double value,
@@ -299,7 +299,7 @@ public class DataUtilitiesTest extends DataUtilities {
         double[][] data = { { Double.MIN_VALUE, Double.MIN_VALUE } };
         java.lang.Number[][] expected = { { Double.MIN_VALUE, Double.MIN_VALUE } };
 
-        assertArrayEquals(expected, DataUtilities.createNumberArray2D(data));
+        assertArrayEquals("Creating an array with min values did not give the expected array", expected, DataUtilities.createNumberArray2D(data));
     }
 
     // Objective: Tests the function with negative infinity values to see how it
@@ -310,7 +310,7 @@ public class DataUtilitiesTest extends DataUtilities {
         double[][] data = { { Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY } };
         java.lang.Number[][] expected = { { Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY } };
 
-        assertArrayEquals(expected, DataUtilities.createNumberArray2D(data));
+        assertArrayEquals("Creating an array of positive infinity values did not give the expected array", expected, DataUtilities.createNumberArray2D(data));
     }
 
     // Objective: Challenges the function with values just below the maximum double
@@ -327,7 +327,7 @@ public class DataUtilitiesTest extends DataUtilities {
                 { Double.MAX_VALUE - 1, Double.MAX_VALUE - 1 }
         };
 
-        assertArrayEquals(expected, DataUtilities.createNumberArray2D(data));
+        assertArrayEquals("Creating an array with nearly max values did not give the expected array", expected, DataUtilities.createNumberArray2D(data));
     }
 
     // Objective: Assesses the function's precision and range with extremely large
@@ -346,7 +346,7 @@ public class DataUtilitiesTest extends DataUtilities {
                 { -1e307, -1e-307 }
         };
 
-        assertArrayEquals(expected, DataUtilities.createNumberArray2D(data));
+        assertArrayEquals("creating an array with large and small exponenets did not return the expected array", expected, DataUtilities.createNumberArray2D(data));
     }
 
     // Objective: Verifies the function's precision with values that exceed the
@@ -365,7 +365,7 @@ public class DataUtilitiesTest extends DataUtilities {
                 { -1.1234567890123456, -1.1234567890123457 }
         };
 
-        assertArrayEquals(expected, DataUtilities.createNumberArray2D(data));
+        assertArrayEquals("creating an array with high precision values did not return the expected array", expected, DataUtilities.createNumberArray2D(data));
     }
 
     // -------- Method tested: createNumberArray() -----------
@@ -396,7 +396,7 @@ public class DataUtilitiesTest extends DataUtilities {
     public void testCreateNumberArrayWithEmptyArray() {
         java.lang.Number[] result = DataUtilities.createNumberArray(emptyArray);
         assertNotNull(result);
-        assertEquals(0, result.length);
+        assertEquals("array length was not 0 for input of empty array", 0, result.length);
     }
 
     // Test the creation of number array with negative values. Checks the arrays
@@ -406,7 +406,7 @@ public class DataUtilitiesTest extends DataUtilities {
     public void testCreateNumberArrayWithNegativeValuesArrayLength() {
         java.lang.Number[] result = DataUtilities.createNumberArray(negArray);
         assertNotNull(result);
-        assertEquals(negArray.length, result.length);
+        assertEquals("array length did not match original array input length", negArray.length, result.length);
     }
 
     // Test the creation of number array with negative values. Checks the values of
@@ -416,7 +416,7 @@ public class DataUtilitiesTest extends DataUtilities {
     public void testCreateNumberArrayWithNegativeValuesArrayElements() {
         java.lang.Number[] result = DataUtilities.createNumberArray(negArray);
         for (int i = 0; i < negArray.length - 1; i++) {
-            assertEquals(negArray[i], result[i].doubleValue(), 0.000001);
+            assertEquals("Element at index \" + i + \" has incorrect value", negArray[i], result[i].doubleValue(), 0.000001);
         }
     }
 
@@ -425,8 +425,8 @@ public class DataUtilitiesTest extends DataUtilities {
     @Test
     public void testCreateNumberArrayWithMixedValuesArrayLength() {
         java.lang.Number[] result = DataUtilities.createNumberArray(mixedArray);
-        assertNotNull(result);
-        assertEquals(mixedArray.length, result.length);
+        assertNotNull("returned array was null", result);
+        assertEquals("array length did not match original array input length", mixedArray.length, result.length);
     }
 
     // Test the creation of number array with mixed values. Checks the values of the
@@ -436,7 +436,7 @@ public class DataUtilitiesTest extends DataUtilities {
     public void testCreateNumberArrayWithMixedValuesArrayElements() {
         java.lang.Number[] result = DataUtilities.createNumberArray(mixedArray);
         for (int i = 0; i < mixedArray.length - 1; i++) {
-            assertEquals(mixedArray[i], result[i].doubleValue(), 0.000001);
+            assertEquals("Element at index \" + i + \" has incorrect value", mixedArray[i], result[i].doubleValue(), 0.000001);
         }
     }
 
@@ -463,7 +463,7 @@ public class DataUtilitiesTest extends DataUtilities {
     @Test
     public void testCreateNumberArrayBoundary() {
         java.lang.Number[] expected = { Double.MIN_VALUE, Double.MAX_VALUE };
-        assertArrayEquals(expected, DataUtilities.createNumberArray(boundaryArray));
+        assertArrayEquals("created array from createNumberArray did not match expected Number array", expected, DataUtilities.createNumberArray(boundaryArray));
     }
 
     // -------- Method tested: getCumulativePercentages() -----------
@@ -508,11 +508,11 @@ public class DataUtilitiesTest extends DataUtilities {
         KeyedValues result = DataUtilities.getCumulativePercentages(data);
 
         // Verify that the cumulative percentage for the first value is 0.3125
-        assertEquals(0.3125, result.getValue(0));
+        assertEquals("cumulative percentage for first value did not match expected value", 0.3125, result.getValue(0));
         // Verify that the cumulative percentage for the second value is 0.875
-        assertEquals(0.875, result.getValue(1));
+        assertEquals("cumulative percentage for second value did not match expected value", 0.875, result.getValue(1));
         // Verify that the cumulative percentage for the third value is 1.0
-        assertEquals(1.0, result.getValue(2));
+        assertEquals("cumulative percentage for third value did not match expected value", 1.0, result.getValue(2));
     }
 
     // Test strategy: This set of tests verifies the behavior of
@@ -556,11 +556,11 @@ public class DataUtilitiesTest extends DataUtilities {
         KeyedValues result = DataUtilities.getCumulativePercentages(data);
 
         // Verify that the cumulative percentage for the first value is 0.7
-        assertEquals(0.7, result.getValue(0));
+        assertEquals("cumulative percentage for first value did not match expected value", 0.7, result.getValue(0));
         // Verify that the cumulative percentage for the second value is 0.5
-        assertEquals(0.5, result.getValue(1));
+        assertEquals("cumulative percentage for second value did not match expected value", 0.5, result.getValue(1));
         // Verify that the cumulative percentage for the third value is 1.0
-        assertEquals(1.0, result.getValue(2));
+        assertEquals("cumulative percentage for third value did not match expected value", 1.0, result.getValue(2));
     }
 
     // ---------- Tests for calculateColumnTotal ----------
@@ -595,7 +595,7 @@ public class DataUtilitiesTest extends DataUtilities {
         });
         double result = DataUtilities.calculateColumnTotal(values, 0);
         // verify
-        assertEquals(result, 10.0, .000000001d);
+        assertEquals("result from calculating the column total did not match the expected output", result, 10.0, .000000001d);
     }
 
     // Test To check columnTotal for 5 negative values in a column
@@ -794,7 +794,7 @@ public class DataUtilitiesTest extends DataUtilities {
             }
         });
         double result = DataUtilities.calculateRowTotal(values, 0);
-        assertEquals(result, 10.0, .000000001d);
+        assertEquals("result from calculating the row total did not match the expected output", result, 10.0, .000000001d);
     }
 
     // Test To check rowTotal for 5 negative values in a row
