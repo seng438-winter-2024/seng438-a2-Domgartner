@@ -12,7 +12,13 @@
 
 # 1 Introduction
 
-Text…
+In this assignment, we created a JUnit testing suite for two classes in JFree. The objective of this assignment was to become familiarized with the  fundamentals of automated unit testing, emphasizing testing based on unit requirements. The test development process for the two classes in JFree (Range and DataUtilities) was done through a process of four steps:
+  1. Familiarization of the software and methods, with underatanding of the javadocs documentation
+  2. Design of unit tests based off the javadocs documentation
+  3. Development of Java unit test code for the two JFree classes
+  4. Peer review of the developed unit tests
+
+In this lab report, we will provide a detailed overview of the strategies employed in developing our JUnit test suite. We will focus on the methods tested within the Range and DataUtilities classes. Additionally, we will conclude the report with a reflection on our team's development process, workflow, and any challenges faced during the assignment.
 
 # 2 Detailed description of unit test strategy
 
@@ -27,11 +33,10 @@ the source code method // they test. identify which tests cover which partitions
 you have explained in the test strategy section //above
 
 # 4 How the team work/effort was divided and managed
-
-- Each team member did 1 Range test function and 1 DataUtilities test function, where one member did 1 extra test of each.
+- To begin the assignment, each group member worked through steps 1.1 to 2.1.4 individually. This allowed each group member to become familiarized with the software and the package structure of the eclipse IDE. When developing the unit tests, we decided to split thte tests by method. Each group member chose one method to test in the Range class and one in the DataUtilities class. Each member looked closely at the documentation provided for the method of their choosing and designed and wrote the tests accordingly. Two members tested one additional method each as we were required to test a total of 10 methods between the two classes. Once the test development was complete, we looked over the completed tests together as a group.
 
 # 5 Difficulties encountered, challenges overcome, and lessons learned
-- We didn't face any difficulties in this assignment as there was great documentation and notes from lectures!
+- Througout this assignment, we did not face any major challenges as a group. However, we did face some challenges in communication of which group member is testing which method. As a result, some group members tested the same methods, overlapping on the tests. Despite this challenge, we were able to effectively manage these miscommunications as a group, where we collectively worked to test the missed methods. Other than some minor miscommunication, we didn't face any difficulties in this assignment as there was great documentation and notes from lectures!
 
 # 6 Comments/feedback on the lab itself
 
