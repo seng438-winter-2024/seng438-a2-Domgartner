@@ -482,6 +482,7 @@ public class DataUtilitiesTest extends DataUtilities {
     // 0 0.3125 (5 / 16)
     // 1 0.875 ((5 + 9) / 16)
     // 2 1.0 ((5 + 9 + 2) / 16)
+    // type: ECP
     @Test
     public void testGetCumulativePercentagesForTwoValues() {
         mockingContext.checking(new Expectations() {
@@ -530,6 +531,7 @@ public class DataUtilitiesTest extends DataUtilities {
     // 0 0.7 (7 / 10)
     // 1 0.5 ((7 + (-2)) / 10)
     // 2 1.0 ((7 + (-2) + 5) / 10)
+    // type: ECP
     @Test
     public void testGetCumulativePercentagesForTwoValuesWithNegativeNumber() {
         mockingContext.checking(new Expectations() {
