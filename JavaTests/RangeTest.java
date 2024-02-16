@@ -106,7 +106,7 @@ public class RangeTest {
      */
     @Test
     public void testgetCentralValueWithOddNumberofElements() {
-        assertEquals("Incorrect central value for odd number of elements in range", 3,
+        assertEquals("Incorrect central value for odd number of elements in range. Expected 3", 3,
                 oddNumElemRange.getCentralValue(), 0);
     }
 
@@ -117,7 +117,7 @@ public class RangeTest {
      */
     @Test
     public void testgetCentralValueWithEvenNumberofElements() {
-        assertEquals("Incorrect central value for even number of elements in range", 3.5,
+        assertEquals("Incorrect central value for even number of elements in range. Expected 3.5", 3.5,
                 evenNumElemRange.getCentralValue(), 0);
     }
 
@@ -128,7 +128,7 @@ public class RangeTest {
      */
     @Test
     public void testgetCentralValueNegativeRange() {
-        assertEquals("Incorrect central value for range of negative values", -50.5, negativeRange.getCentralValue(), 0);
+        assertEquals("Incorrect central value for range of negative values. Expected -50.5", -50.5, negativeRange.getCentralValue(), 0);
     }
 
     /**
@@ -138,7 +138,7 @@ public class RangeTest {
      */
     @Test
     public void testgetCentralWithSmallRange() {
-        assertEquals("Incorrect central value for small range of 1 element", 0, smallRange.getCentralValue(), 0);
+        assertEquals("Incorrect central value for small range of 1 element. Expected 0", 0, smallRange.getCentralValue(), 0);
     }
 
     /**
@@ -148,7 +148,7 @@ public class RangeTest {
      */
     @Test
     public void testgetCentralWithLargeRange() {
-        assertEquals("Incorrect central value for largest range possible", -0.5, largeRange.getCentralValue(), 0);
+        assertEquals("Incorrect central value for largest range possible. Expected -0.5", -0.5, largeRange.getCentralValue(), 0);
     }
 
     /**
@@ -158,7 +158,7 @@ public class RangeTest {
      */
     @Test
     public void testgetCentralWithDoubleValues() {
-        assertEquals("Incorrect central value for range of double data type ", 3.85, doubleRange.getCentralValue(),
+        assertEquals("Incorrect central value for range of double data type. Expected 3.85", 3.85, doubleRange.getCentralValue(),
                 0.00000001d);
     }
 
@@ -169,7 +169,7 @@ public class RangeTest {
      */
     @Test
     public void testgetCentralWithPositiveToNegativeRange() {
-        assertEquals("Incorrect central value for range from positive to negative ", 0, posToNegRange.getCentralValue(),
+        assertEquals("Incorrect central value for range from positive to negative. Expected 0", 0, posToNegRange.getCentralValue(),
                 0);
     }
 
