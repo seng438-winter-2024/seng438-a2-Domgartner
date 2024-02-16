@@ -45,12 +45,12 @@ When developing the tests we used the information given above to create test tha
 
 ## **Benefits and Drawbacks of Mocking:**
 
-**Benefits:**
+### **Benefits:**
 
 - **Isolation:** Mocking allows us to isolate the unit under test from its dependencies, enabling focused testing and easier identification of defects.
 - **Speed**: Mock testing can be faster than traditional testing methods because it eliminates the need for complex setup and teardown procedures and reduces the time required to run tests.
 
-**Drawbacks:**
+### **Drawbacks:**
 
 - **Complexity:** Mocking can introduce complexity, especially when dealing with complex dependencies or interactions between multiple components. We all noticed this when actually writing the tests
 
